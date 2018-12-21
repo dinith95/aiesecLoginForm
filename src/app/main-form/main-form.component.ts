@@ -9,8 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class MainFormComponent implements OnInit {
 
   constructor() { }
+  fname: String;
+  lname: string;
+  email: string;
+  mobNo: string;
+  refMethod: string;
+  selectedCommitee: string ;
 
   hide: boolean;
+  
   localOffice: Object[] = [];
   referralMethods: object[] = [];
 
@@ -54,6 +61,11 @@ export class MainFormComponent implements OnInit {
       {value: '9' , viewValue: 'Vk'},
       {value: '9' , viewValue: 'Media (magazine, TV, newspaper or radio)'},
     ];
+  }
+  
+
+  submitData(){
+    alert(this.fname);
   }
 
 }

@@ -4,7 +4,7 @@
     flex-direction: row;
 }
 #image{
-    align-content: flex-start;
+    align-content: stretch;
     align-self: flex-start;
     align-items: flex-start;
 }

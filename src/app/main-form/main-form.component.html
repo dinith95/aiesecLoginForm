@@ -8,55 +8,61 @@
     </mat-grid-tile>
     <mat-grid-tile colspan="1" id="form">
         <div class="info">
-            <form class="personal-info">
-                <mat-form-field>
-                    <input matInput  placeholder="first name"/>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                    <input matInput  placeholder="Last name"/>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                    <input matInput placeholder="Email" >
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                    <input matInput type="password"  placeholder="password" [type]="hide ? 'password': 'text'"/>
-                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                    <input matInput  placeholder="    mobile number" type="tel"  />
-                    <span matPrefix>+94</span>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                    <mat-select placeholder ="Local Comitee" >
-                        <mat-option *ngFor="let lc of localOffice"  [value] = "localOffice.value">
-                            {{lc.viewValue}}
-                        </mat-option>
-                    </mat-select>    
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                    <mat-select placeholder ="Reffereal method" >
-                            <mat-option *ngFor="let lc of localOffice"  [value] = "localOffice.value">
-                                {{lc.viewValue}}
-                            </mat-option>
-                    </mat-select>   
-                </mat-form-field>
-                <br>
-                <mat-checkbox>
-                        <p> by sigining i would agree to AIESEC <a href="https://aiesec.org/assets/terms.pdf"> privacy terms</a>  </p>  
-                        
-                </mat-checkbox>
-                <br>
-                
-                <button mat-flat-button color="primary" id="btn_submit">  Submit </button>
-                
-        
-            </form>
+            <mat-card>
+                    <form class="personal-info">
+                            <mat-form-field>
+                                <input matInput  placeholder="first name" required [(ngModel)]="fname" name="fname"/>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <input matInput  placeholder="Last name" [(ngModel)]="lanme" name="lname" required/>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <input matInput type="password"  placeholder="password" [type]="hide ? 'password': 'text'" 
+                                    [(ngModel)]="password" name="password"     required/>
+                                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <input matInput  placeholder="    mobile number" type="tel"  [(ngModel)]="mobNo"  name="mobNo" required/>
+                                <span matPrefix>+94</span>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <mat-select placeholder ="Local Comitee" [(ngModel)]="selectedCommitee" 
+                                 name="selectedCommitee" >
+                                    <mat-option *ngFor="let lc of localOffice"  [value] = "localOffice.value">
+                                        {{lc.viewValue}}
+                                    </mat-option>
+                                </mat-select>    
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <mat-select placeholder ="Reffereal method" [(ngModel)]="refMethod" name="refMethod" >
+                                        <mat-option *ngFor="let ref of referralMethods"  [value] = "localOffice.value">
+                                            {{ref.viewValue}}
+                                        </mat-option>
+                                </mat-select>   
+                            </mat-form-field>
+                            <br>
+                            <mat-checkbox [(ngModel)]="accepted" name="accepted">
+                                    <p> by sigining i would agree to AIESEC <a href="https://aiesec.org/assets/terms.pdf"> privacy terms</a>  </p>  
+                                    
+                            </mat-checkbox>
+                            <br>
+                            
+                            <button mat-flat-button color="primary" id="btn_submit" (click) = "submitData()" > 
+                                 Submit </button>
+                            
+                    
+                        </form>
+            </mat-card>
+            
             
          </div>
     </mat-grid-tile>
