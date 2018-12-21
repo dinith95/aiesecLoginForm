@@ -4,6 +4,17 @@ import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
+
+import { 
+          MatButtonModule ,
+          MatInputModule ,
+          MatIconModule,
+          MatSelectModule,
+          MatOptionModule,
+     } from '@angular/material';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+// importing the compinnts 
 import { MainFormComponent } from './main-form/main-form.component';
 
 @NgModule({
@@ -14,7 +25,14 @@ import { MainFormComponent } from './main-form/main-form.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSelectModule,
+    MatOptionModule
+
 
   ],
   providers: [],

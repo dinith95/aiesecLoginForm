@@ -3,10 +3,43 @@
 </h1> -->
  <div class="info">
     <form class="personal-info">
-      
-        <input matInput type="text" placeholder="first name"/>
-        <mat-radio-group>
-            <mat-radio-button value="1">Option 1</mat-radio-button>
-        </mat-radio-group>
+        <mat-form-field>
+            <input matInput  placeholder="first name"/>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput  placeholder="Last name"/>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Email" >
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput type="password"  placeholder="password" [type]="hide ? 'password': 'text'"/>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput  placeholder="  mobile number" type="tel"  />
+            <span matPrefix>+94</span>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-select placeholder ="Local Comitee" >
+                <mat-option *ngFor="let lc of localOffice"  [value] = "localOffice.value">
+                    {{lc.viewValue}}
+                </mat-option>
+            </mat-select>    
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-select placeholder ="Reffereal method" >
+                    <mat-option *ngFor="let lc of localOffice"  [value] = "localOffice.value">
+                        {{lc.viewValue}}
+                    </mat-option>
+            </mat-select>   
+        </mat-form-field>
     </form>
+    
  </div>
