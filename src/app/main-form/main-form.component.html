@@ -1,58 +1,64 @@
 <!-- <h1>
   main-form works!
 </h1> -->
- <div class="info">
-    <form class="personal-info">
-        <mat-form-field>
-            <input matInput  placeholder="first name"/>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <input matInput  placeholder="Last name"/>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <input matInput placeholder="Email" >
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <input matInput type="password"  placeholder="password" [type]="hide ? 'password': 'text'"/>
-            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <input matInput  placeholder="  mobile number" type="tel"  />
-            <span matPrefix>+94</span>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <mat-select placeholder ="Local Comitee" >
-                <mat-option *ngFor="let lc of localOffice"  [value] = "localOffice.value">
-                    {{lc.viewValue}}
-                </mat-option>
-            </mat-select>    
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <mat-select placeholder ="Reffereal method" >
-                    <mat-option *ngFor="let lc of localOffice"  [value] = "localOffice.value">
-                        {{lc.viewValue}}
-                    </mat-option>
-            </mat-select>   
-        </mat-form-field>
-        <br>
-        <!-- <mat-form-field>
-            <mat-checkbox>
-                <p> by sigining i would agree to AIESEC </p>  
-                <a href="https://aiesec.org/assets/terms.pdf"> privacy terms</a> 
-            </mat-checkbox>
-            
-        </mat-form-field> -->
-        <br>
-        <!-- <mat-form-field>
-            <button mat-stroked-button id="btn_submit">  Submit </button>
-        </mat-form-field> -->
-
-    </form>
+<mat-grid-list cols="2" rowHeight="3:2" id="grid_list" >
     
- </div>
+    <mat-grid-tile colspan="1" id="image">
+        <img src="https://cdn.travel-mediaserver.com/driveaway/images/car-hire/destinations/france-large.jpg"/>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" id="form">
+        <div class="info">
+            <form class="personal-info">
+                <mat-form-field>
+                    <input matInput  placeholder="first name"/>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput  placeholder="Last name"/>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput placeholder="Email" >
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput type="password"  placeholder="password" [type]="hide ? 'password': 'text'"/>
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput  placeholder="    mobile number" type="tel"  />
+                    <span matPrefix>+94</span>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <mat-select placeholder ="Local Comitee" >
+                        <mat-option *ngFor="let lc of localOffice"  [value] = "localOffice.value">
+                            {{lc.viewValue}}
+                        </mat-option>
+                    </mat-select>    
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <mat-select placeholder ="Reffereal method" >
+                            <mat-option *ngFor="let lc of localOffice"  [value] = "localOffice.value">
+                                {{lc.viewValue}}
+                            </mat-option>
+                    </mat-select>   
+                </mat-form-field>
+                <br>
+                <mat-checkbox>
+                        <p> by sigining i would agree to AIESEC <a href="https://aiesec.org/assets/terms.pdf"> privacy terms</a>  </p>  
+                        
+                </mat-checkbox>
+                <br>
+                
+                <button mat-flat-button color="primary" id="btn_submit">  Submit </button>
+                
+        
+            </form>
+            
+         </div>
+    </mat-grid-tile>
+</mat-grid-list>
+ 

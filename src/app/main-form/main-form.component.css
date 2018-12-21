@@ -1,0 +1,10 @@
+/****** grid list style settings *********** */
+#grid_list{
+    display: flex;
+    flex-direction: row;
+}
+#image{
+    align-content: flex-start;
+    align-self: flex-start;
+    align-items: flex-start;
+}

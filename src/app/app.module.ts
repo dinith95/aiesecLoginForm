@@ -12,7 +12,8 @@ import {
           MatSelectModule,
           MatOptionModule,
           MatCheckboxModule,
-          MatFormFieldModule
+          MatFormFieldModule,
+          MatGridListModule
      } from '@angular/material';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -35,7 +36,8 @@ import { MainFormComponent } from './main-form/main-form.component';
     MatSelectModule,
     MatOptionModule,
     MatCheckboxModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatGridListModule
 
 
   ],
