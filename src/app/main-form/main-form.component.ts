@@ -53,7 +53,7 @@ export class MainFormComponent implements OnInit {
       {value: '9' , viewValue: 'Telegram'},
       {value: '9' , viewValue: 'Vk'},
       {value: '9' , viewValue: 'Media (magazine, TV, newspaper or radio)'},
-    ]
+    ];
   }
 
 }

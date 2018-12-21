@@ -11,6 +11,8 @@ import {
           MatIconModule,
           MatSelectModule,
           MatOptionModule,
+          MatCheckboxModule,
+          MatFormFieldModule
      } from '@angular/material';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -31,7 +33,9 @@ import { MainFormComponent } from './main-form/main-form.component';
     MatButtonModule,
     MatIconModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    MatCheckboxModule,
+    MatFormFieldModule
 
 
   ],
