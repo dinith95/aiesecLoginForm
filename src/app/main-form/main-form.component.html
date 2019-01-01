@@ -11,11 +11,11 @@
             <mat-card>
                     <form class="personal-info">
                             <mat-form-field>
-                                <input matInput  placeholder="first name" required [(ngModel)]="fname" name="fname"/>
+                                <input matInput  placeholder="first name" required [(ngModel)]="fname" name="fname" />
                             </mat-form-field>
                             <br>
                             <mat-form-field>
-                                <input matInput  placeholder="Last name" [(ngModel)]="lname" name="lname" required/>
+                                <input matInput  placeholder="Last name" [(ngModel)]="lname" name="lname" required = "true"/>
                             </mat-form-field>
                             <br>
                             <mat-form-field>
@@ -35,7 +35,7 @@
                             <br>
                             <mat-form-field>
                                 <mat-select placeholder ="Local Comitee" [(ngModel)]="selectedCommitee" 
-                                 name="selectedCommitee" >
+                                 name="selectedCommitee" required >
                                     <mat-option *ngFor="let lc of localOffice"  [value] = "lc.value">
                                         {{lc.viewValue}}
                                     </mat-option>
@@ -43,8 +43,8 @@
                             </mat-form-field>
                             <br>
                             <mat-form-field>
-                                <mat-select placeholder ="Reffereal method" [(ngModel)]="refMethod" name="refMethod" >
-                                        <mat-option *ngFor="let ref of referralMethods"  [value] = "ref.value">
+                                <mat-select placeholder ="Reffereal method" [(ngModel)]="refMethod" name="refMethod" required >
+                                        <mat-option *ngFor="let ref of referralMethods"  [value] = "ref.value" >
                                             {{ref.viewValue}}
                                         </mat-option>
                                 </mat-select>   

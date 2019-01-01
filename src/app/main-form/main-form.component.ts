@@ -13,17 +13,17 @@ export interface SelectList{
 export class MainFormComponent implements OnInit {
 
   constructor() { }
-  fname: String;
-  lname: string;
-  password: string;
-  accepted: boolean;
-  email: string;
-  mobNo: string;
-  refMethod: string;
-  selectedCommitee: string ;
+  fname: String = "";
+  lname: string = "";
+  password: string = "";
+  accepted: boolean = false;
+  email: string = "";
+  mobNo: string = "";
+  selectedRefMethod: string = "";
+  selectedCommitee: string = "" ;
 
   hide: boolean; // toggle the hide and show of the password 
-  
+  dataNotNull: boolean = false; // checks whether any field is null
   
 
   localOffice: SelectList[]  = [
@@ -70,10 +70,24 @@ export class MainFormComponent implements OnInit {
     this.hide =  true;
     
   }
-  
+
+  validateData(){
+    if(this.fname != "" && this.lname != "" && this.email != "" && this.mobNo != ""
+     && this.selectedCommitee != "" && this.selectedCommitee != ""){
+      this.dataNotNull = true;
+    }
+  }
 
   submitData(){
-    alert(this.fname);
+    
+    this.validateData();
+    if(this.dataNotNull){
+      alert(this.fname);
+    }
+    // alert("submit dosent work");
+    
   }
+
+  
 
 }
