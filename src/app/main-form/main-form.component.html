@@ -3,9 +3,9 @@
 </h1> -->
 <mat-grid-list cols="2" rowHeight="3:2" id="grid_list" >
     
-    <mat-grid-tile colspan="1" id="image">
+    <!-- <mat-grid-tile colspan="1" id="image">
         <img src="https://cdn.travel-mediaserver.com/driveaway/images/car-hire/destinations/france-large.jpg"/>
-    </mat-grid-tile>
+    </mat-grid-tile> -->
     <mat-grid-tile colspan="1" id="form">
         <div class="info">
             <mat-card>
@@ -19,7 +19,7 @@
                             </mat-form-field>
                             <br>
                             <mat-form-field>
-                                <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+                                <input matInput placeholder="Email" [(ngModel)]="email" name="email" required/>
                             </mat-form-field>
                             <br>
                             <mat-form-field>
@@ -36,7 +36,7 @@
                             <mat-form-field>
                                 <mat-select placeholder ="Local Comitee" [(ngModel)]="selectedCommitee" 
                                  name="selectedCommitee" >
-                                    <mat-option *ngFor="let lc of localOffice"  [value] = "localOffice.value">
+                                    <mat-option *ngFor="let lc of localOffice"  [value] = "lc.value">
                                         {{lc.viewValue}}
                                     </mat-option>
                                 </mat-select>    
@@ -44,7 +44,7 @@
                             <br>
                             <mat-form-field>
                                 <mat-select placeholder ="Reffereal method" [(ngModel)]="refMethod" name="refMethod" >
-                                        <mat-option *ngFor="let ref of referralMethods"  [value] = "localOffice.value">
+                                        <mat-option *ngFor="let ref of referralMethods"  [value] = "ref.value">
                                             {{ref.viewValue}}
                                         </mat-option>
                                 </mat-select>   
@@ -56,8 +56,8 @@
                             </mat-checkbox>
                             <br>
                             
-                            <button mat-flat-button color="primary" id="btn_submit" (click) = "submitData()" > 
-                                 Submit </button>
+                            <button type="submit" mat-flat-button color="primary" id="btn_submit" (click) = "submitData()" > Submit </button>
+                                
                             
                     
                         </form>
