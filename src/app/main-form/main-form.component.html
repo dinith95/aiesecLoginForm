@@ -15,7 +15,7 @@
                             </mat-form-field>
                             <br>
                             <mat-form-field>
-                                <input matInput  placeholder="Last name" [(ngModel)]="lname" name="lname" required = "true"/>
+                                <input matInput  placeholder="Last name" [(ngModel)]="lname" name="lname" required/>
                             </mat-form-field>
                             <br>
                             <mat-form-field>
@@ -24,7 +24,9 @@
                             <br>
                             <mat-form-field>
                                 <input matInput type="password"  placeholder="password" [type]="hide ? 'password': 'text'" 
-                                    [(ngModel)]="password" name="password"     required/>
+                                    [(ngModel)]="password" name="password"     required
+                                    matTooltip="Info about the action"
+                                    aria-label="Button that displays a tooltip when focused or hovered over"/>
                                 <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                             </mat-form-field>
                             <br>
@@ -56,7 +58,7 @@
                             </mat-checkbox>
                             <br>
                             
-                            <button type="submit" mat-flat-button color="primary" id="btn_submit" (click) = "submitData()" > Submit </button>
+                            <button type="submit" mat-flat-button color="primary" id="btn_submit" (click) = "submitData()" matTooltip="Info about the action" > Submit </button>
                                 
                             
                     

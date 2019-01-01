@@ -1,9 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Inject} from '@angular/core';
+import { MatSnackBarModule } from '@angular/material';
+// import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatSnackBar} from '@angular/material';
+
+var passwordValidator = require('password-validator');
 
 export interface SelectList{
   value: string;
   viewValue:string;
 }
+// export class DialogOverviewExampleDialog {
+
+//   constructor(
+//     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+//     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+//   onNoClick(): void {
+//     this.dialogRef.close();
+//   }
+// }
 
 @Component({
   selector: 'app-main-form',
@@ -11,8 +26,8 @@ export interface SelectList{
   styleUrls: ['./main-form.component.css']
 })
 export class MainFormComponent implements OnInit {
-
-  constructor() { }
+  
+  constructor(public snackBar: MatSnackBar) { }
   fname: String = "";
   lname: string = "";
   password: string = "";
@@ -24,7 +39,7 @@ export class MainFormComponent implements OnInit {
 
   hide: boolean; // toggle the hide and show of the password 
   dataNotNull: boolean = false; // checks whether any field is null
-  
+  validPassword: boolean = false; // checks for the validity of the password 
 
   localOffice: SelectList[]  = [
     {value: '1' , viewValue: 'ACBT'},
@@ -76,12 +91,29 @@ export class MainFormComponent implements OnInit {
      && this.selectedCommitee != "" && this.selectedCommitee != ""){
       this.dataNotNull = true;
     }
+    var pwSchema = new passwordValidator();
+    pwSchema
+      .is().min(8)
+      .has().digits()
+      .has().uppercase()
+      .has().lowercase();
+    this.validPassword = pwSchema.validate(this.password);
+
+
   }
 
   submitData(){
     
     this.validateData();
     if(this.dataNotNull){
+      if(!this.validPassword){
+        // alert("incorrect password");
+        var message = "incorrect password type";
+        this.snackBar.open(message,"close",{
+          duration: 5000,
+        })
+        
+      }
       alert(this.fname);
     }
     // alert("submit dosent work");
