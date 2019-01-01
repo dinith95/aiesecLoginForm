@@ -11,6 +11,8 @@ export class MainFormComponent implements OnInit {
   constructor() { }
   fname: String;
   lname: string;
+  password: string;
+  accepted: boolean;
   email: string;
   mobNo: string;
   refMethod: string;
