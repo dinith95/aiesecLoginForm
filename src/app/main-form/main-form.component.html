@@ -1,73 +1,76 @@
 <!-- <h1>
   main-form works!
 </h1> -->
-<mat-grid-list cols="2" rowHeight="3:2" id="grid_list" >
+<div>
+    <mat-grid-list cols="2"  id="grid_list" >
     
-    <!-- <mat-grid-tile colspan="1" id="image">
-        <img src="https://cdn.travel-mediaserver.com/driveaway/images/car-hire/destinations/france-large.jpg"/>
-    </mat-grid-tile> -->
-    <mat-grid-tile colspan="1" id="form">
-        <div class="info">
-            <mat-card>
-                    <form class="personal-info">
-                            <mat-form-field>
-                                <input matInput  placeholder="first name" required [(ngModel)]="fname" name="fname" />
-                            </mat-form-field>
-                            <br>
-                            <mat-form-field>
-                                <input matInput  placeholder="Last name" [(ngModel)]="lname" name="lname" required/>
-                            </mat-form-field>
-                            <br>
-                            <mat-form-field>
-                                <input matInput placeholder="Email" [(ngModel)]="email" name="email" required
-                                        [formControl] = "fcemail"    />
-                            </mat-form-field>
-                            <mat-error *ngIf="fcemail.invalid">{{incorretEmail()}}</mat-error>
-                            <br>
-                            <mat-form-field >
-                                <input matInput type="password"  placeholder="password" [type]="hide ? 'password': 'text'" 
-                                    [(ngModel)]="password" name="password" [formControl] = "fcpassword"    required />
-                                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                                <mat-error *ngIf="fcpassword.invalid">{{incorrectPassword()}}</mat-error>
-                            </mat-form-field>
-                            <br>
-                            <mat-form-field>
-                                <input matInput  placeholder="    mobile number" type="tel"  [(ngModel)]="mobNo"  name="mobNo" required/>
-                                <span matPrefix>+94</span>
-                            </mat-form-field>
-                            <br>
-                            <mat-form-field>
-                                <mat-select placeholder ="Local Comitee" [(ngModel)]="selectedCommitee" 
-                                 name="selectedCommitee" required >
-                                    <mat-option *ngFor="let lc of localOffice"  [value] = "lc.value">
-                                        {{lc.viewValue}}
-                                    </mat-option>
-                                </mat-select>    
-                            </mat-form-field>
-                            <br>
-                            <mat-form-field>
-                                <mat-select placeholder ="Reffereal method" [(ngModel)]="refMethod" name="refMethod" required >
-                                        <mat-option *ngFor="let ref of referralMethods"  [value] = "ref.value" >
-                                            {{ref.viewValue}}
+        <mat-grid-tile colspan="1" id="image">
+            <img src="https://cdn.travel-mediaserver.com/driveaway/images/car-hire/destinations/france-large.jpg"/>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" id="form">
+            <div class="info">
+                <mat-card>
+                        <form class="personal-info">
+                                <mat-form-field>
+                                    <input matInput  placeholder="first name" required [(ngModel)]="fname" name="fname" />
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <input matInput  placeholder="Last name" [(ngModel)]="lname" name="lname" required/>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <input matInput placeholder="Email" [(ngModel)]="email" name="email" required
+                                            [formControl] = "fcemail"    />
+                                </mat-form-field>
+                                <mat-error *ngIf="fcemail.invalid">{{incorretEmail()}}</mat-error>
+                                <br>
+                                <mat-form-field >
+                                    <input matInput type="password"  placeholder="password" [type]="hide ? 'password': 'text'" 
+                                        [(ngModel)]="password" name="password" [formControl] = "fcpassword"    required />
+                                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    <mat-error *ngIf="fcpassword.invalid">{{incorrectPassword()}}</mat-error>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <input matInput  placeholder="    mobile number" type="tel"  [(ngModel)]="mobNo"  name="mobNo" required/>
+                                    <span matPrefix>+94</span>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-select placeholder ="Local Comitee" [(ngModel)]="selectedCommitee" 
+                                     name="selectedCommitee" required >
+                                        <mat-option *ngFor="let lc of localOffice"  [value] = "lc.value">
+                                            {{lc.viewValue}}
                                         </mat-option>
-                                </mat-select>   
-                            </mat-form-field>
-                            <br>
-                            <mat-checkbox [(ngModel)]="accepted" name="accepted">
-                                    <p> by sigining i would agree to AIESEC <a href="https://aiesec.org/assets/terms.pdf"> privacy terms</a>  </p>  
-                                    
-                            </mat-checkbox>
-                            <br>
-                            
-                            <button type="submit" mat-flat-button color="primary" id="btn_submit" (click) = "submitData()" matTooltip="Info about the action" > Submit </button>
+                                    </mat-select>    
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field>
+                                    <mat-select placeholder ="Reffereal method" [(ngModel)]="refMethod" name="refMethod" required >
+                                            <mat-option *ngFor="let ref of referralMethods"  [value] = "ref.value" >
+                                                {{ref.viewValue}}
+                                            </mat-option>
+                                    </mat-select>   
+                                </mat-form-field>
+                                <br>
+                                <mat-checkbox [(ngModel)]="accepted" name="accepted">
+                                        <p> by sigining i would agree to AIESEC <a href="https://aiesec.org/assets/terms.pdf"> privacy terms</a>  </p>  
+                                        
+                                </mat-checkbox>
+                                <br>
                                 
-                            
-                    
-                        </form>
-            </mat-card>
-            
-            
-         </div>
-    </mat-grid-tile>
-</mat-grid-list>
+                                <button type="submit" mat-flat-button color="primary" id="btn_submit" (click) = "submitData()" matTooltip="Info about the action" > Submit </button>
+                                    
+                                
+                        
+                            </form>
+                </mat-card>
+                
+                
+             </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
  
