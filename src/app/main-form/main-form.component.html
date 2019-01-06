@@ -9,7 +9,7 @@
     <mat-grid-tile colspan="1" id="form">
         <div class="info">
             <mat-card>
-                    <form class="personal-info">
+                    <form class="personal-info" id="form">
                             <mat-form-field>
                                 <input matInput  placeholder="first name" required [(ngModel)]="fname" name="fname" />
                             </mat-form-field>
@@ -59,7 +59,8 @@
                             </mat-checkbox>
                             <br>
                             
-                            <button type="submit" mat-flat-button color="primary" id="btn_submit" (click) = "submitData()" matTooltip="Info about the action" > Submit </button>
+                            <button type="submit" mat-flat-button color="primary" id="btn_submit" (click) = "submitData()" 
+                            matTooltip="Info about the action"  > Submit </button>
                                 
                             
                     
