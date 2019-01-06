@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import {FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
@@ -31,6 +31,7 @@ import { MainFormComponent } from './main-form/main-form.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     MatInputModule,
     BrowserAnimationsModule,
     MatButtonModule,

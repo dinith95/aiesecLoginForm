@@ -19,15 +19,16 @@
                             </mat-form-field>
                             <br>
                             <mat-form-field>
-                                <input matInput placeholder="Email" [(ngModel)]="email" name="email" required/>
+                                <input matInput placeholder="Email" [(ngModel)]="email" name="email" required
+                                        [formControl] = "fcemail"    />
                             </mat-form-field>
+                            <mat-error *ngIf="fcemail.invalid">{{incorretEmail()}}</mat-error>
                             <br>
-                            <mat-form-field>
+                            <mat-form-field >
                                 <input matInput type="password"  placeholder="password" [type]="hide ? 'password': 'text'" 
-                                    [(ngModel)]="password" name="password"     required
-                                    matTooltip="Info about the action"
-                                    aria-label="Button that displays a tooltip when focused or hovered over"/>
+                                    [(ngModel)]="password" name="password" [formControl] = "fcpassword"    required />
                                 <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                <mat-error *ngIf="fcpassword.invalid">{{incorrectPassword()}}</mat-error>
                             </mat-form-field>
                             <br>
                             <mat-form-field>

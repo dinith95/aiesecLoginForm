@@ -2,23 +2,23 @@ import { Component, OnInit ,Inject} from '@angular/core';
 import { MatSnackBarModule } from '@angular/material';
 // import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {MatSnackBar} from '@angular/material';
+import {ErrorStateMatcher} from '@angular/material/core';
+import {FormControl, FormGroupDirective, NgForm, Validators, AbstractControl} from '@angular/forms';
 
-var passwordValidator = require('password-validator');
+const passwordValidator = require('password-validator');
 
 export interface SelectList{
   value: string;
-  viewValue:string;
+  viewValue: string;
 }
-// export class DialogOverviewExampleDialog {
 
-//   constructor(
-//     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-//     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
-//   onNoClick(): void {
-//     this.dialogRef.close();
-//   }
-// }
 
 @Component({
   selector: 'app-main-form',
@@ -26,20 +26,22 @@ export interface SelectList{
   styleUrls: ['./main-form.component.css']
 })
 export class MainFormComponent implements OnInit {
-  
   constructor(public snackBar: MatSnackBar) { }
-  fname: String = "";
-  lname: string = "";
-  password: string = "";
-  accepted: boolean = false;
-  email: string = "";
-  mobNo: string = "";
-  selectedRefMethod: string = "";
-  selectedCommitee: string = "" ;
+  fname: String = '';
+  lname: String = '';
+  password: String = '';
+  accepted: Boolean = false;
+  email: String = '';
+  mobNo: String = '';
+  selectedRefMethod: String = '';
+  selectedCommitee: String = '';
 
   hide: boolean; // toggle the hide and show of the password 
   dataNotNull: boolean = false; // checks whether any field is null
-  validPassword: boolean = false; // checks for the validity of the password 
+  validPassword: boolean = false; // checks for the validity of the password
+
+  fcemail = new FormControl('', [ Validators.required , Validators.email]);
+  fcpassword = new FormControl('', [this.validatePassword, Validators.required]);
 
   localOffice: SelectList[]  = [
     {value: '1' , viewValue: 'ACBT'},
@@ -79,19 +81,16 @@ export class MainFormComponent implements OnInit {
     {value: '14' , viewValue: 'Vk'},
     {value: '15' , viewValue: 'Media (magazine, TV, newspaper or radio)'},
   ];
-
-  
   ngOnInit() {
     this.hide =  true;
-    
   }
 
   validateData(){
-    if(this.fname != "" && this.lname != "" && this.email != "" && this.mobNo != ""
-     && this.selectedCommitee != "" && this.selectedCommitee != ""){
+    if (this.fname !== '' && this.lname !== '' && this.email !== '' && this.mobNo !== ''
+     && this.selectedCommitee !== '' && this.selectedCommitee !== '') {
       this.dataNotNull = true;
     }
-    var pwSchema = new passwordValidator();
+    const pwSchema = new passwordValidator();
     pwSchema
       .is().min(8)
       .has().digits()
@@ -102,24 +101,55 @@ export class MainFormComponent implements OnInit {
 
   }
 
-  submitData(){
-    
+  validatePassword(control: AbstractControl): {[ key: string]: boolean} | null {
+    if (control.value !== undefined ) {
+      const pwSchema = new passwordValidator();
+      pwSchema
+        .is().min(8)
+        .has().digits()
+        .has().uppercase()
+        .has().lowercase();
+      if (!pwSchema.validate(control.value)) {
+        return { 'validPassword' : true};
+      }
+    }
+    return null;
+  }
+
+  submitData() {
     this.validateData();
-    if(this.dataNotNull){
-      if(!this.validPassword){
+    if (this.dataNotNull){
+      if ( !this.validPassword){
         // alert("incorrect password");
-        var message = "incorrect password type";
-        this.snackBar.open(message,"close",{
+        const message = 'incorrect password type';
+        this.snackBar.open(message , 'close', {
           duration: 5000,
-        })
-        
+        });
       }
       alert(this.fname);
     }
     // alert("submit dosent work");
-    
   }
 
-  
+  incorretEmail(){
+    if (this.fcemail.hasError('required')) {
+      console.log('no email');
+      return 'email address is required';
+    }
+    if (this.fcemail.hasError('email')) {
+      console.log('incorrect email');
+      return 'enter proper email address';
+    }
+    return '';
+  }
 
+  incorrectPassword() {
+    if (this.fcpassword.hasError('required')) {
+        return ('password is required');
+    }
+    if ( this.fcpassword.hasError('validPassword')) {
+      return ('password should have at least  one lowercase letter ,  one uppercase letter , one digit  and minimum of 8 character ');
+    }
+    
+  }
 }
