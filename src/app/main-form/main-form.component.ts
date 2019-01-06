@@ -37,8 +37,9 @@ export class MainFormComponent implements OnInit {
   selectedCommitee: String = '';
 
   hide: boolean; // toggle the hide and show of the password 
-  dataNotNull: boolean = false; // checks whether any field is null
-  validPassword: boolean = false; // checks for the validity of the password
+  dataNotNull: Boolean = false; // checks whether any field is null
+  validPassword: Boolean = false; // checks for the validity of the password
+  // pwSchema: any;
 
   fcemail = new FormControl('', [ Validators.required , Validators.email]);
   fcpassword = new FormControl('', [this.validatePassword, Validators.required]);
@@ -83,22 +84,29 @@ export class MainFormComponent implements OnInit {
   ];
   ngOnInit() {
     this.hide =  true;
+    // this.pwSchema = new passwordValidator();
+    // this.pwSchema
+    //     .is().min(8)
+    //     .has().digits()
+    //     .has().uppercase()
+    //     .has().lowercase();
   }
 
   validateData(){
     if (this.fname !== '' && this.lname !== '' && this.email !== '' && this.mobNo !== ''
-     && this.selectedCommitee !== '' && this.selectedCommitee !== '') {
-      this.dataNotNull = true;
+     && this.selectedCommitee !== '' && this.selectedCommitee !== '' && this.accepted) {
+      // this.dataNotNull = true;
+      const pwSchema = new passwordValidator();
+      pwSchema
+        .is().min(8)
+        .has().digits()
+        .has().uppercase()
+        .has().lowercase();
+      if (pwSchema.validate(this.fcpassword.value) && !this.fcemail.invalid){
+        return true;
+      }
     }
-    const pwSchema = new passwordValidator();
-    pwSchema
-      .is().min(8)
-      .has().digits()
-      .has().uppercase()
-      .has().lowercase();
-    this.validPassword = pwSchema.validate(this.password);
-
-
+    return false;
   }
 
   validatePassword(control: AbstractControl): {[ key: string]: boolean} | null {
@@ -113,43 +121,42 @@ export class MainFormComponent implements OnInit {
         return { 'validPassword' : true};
       }
     }
+    // this.submitDisabled = false;
     return null;
   }
 
   submitData() {
-    this.validateData();
-    if (this.dataNotNull){
-      if ( !this.validPassword){
-        // alert("incorrect password");
-        const message = 'incorrect password type';
-        this.snackBar.open(message , 'close', {
-          duration: 5000,
-        });
-      }
-      alert(this.fname);
+    if(this.validateData()){
+      alert('good to proceed');
     }
     // alert("submit dosent work");
   }
 
   incorretEmail(){
     if (this.fcemail.hasError('required')) {
-      console.log('no email');
+      // console.log('no email');
+      // this.submitDisabled = true ;
       return 'email address is required';
     }
     if (this.fcemail.hasError('email')) {
-      console.log('incorrect email');
+      // console.log('incorrect email');
+      // this.submitDisabled = true ;
       return 'enter proper email address';
     }
+    // this.submitDisabled = false ;
     return '';
   }
 
   incorrectPassword() {
     if (this.fcpassword.hasError('required')) {
-        return ('password is required');
+      // this.submitDisabled = true ;
+      return ('password is required');
     }
     if ( this.fcpassword.hasError('validPassword')) {
+      // this.submitDisabled = true ;
       return ('password should have at least  one lowercase letter ,  one uppercase letter , one digit  and minimum of 8 character ');
     }
-    
+    // this.submitDisabled = false ;
+    return '';
   }
 }
