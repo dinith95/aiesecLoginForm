@@ -11,7 +11,7 @@
             <mat-card>
                     <form class="personal-info">
                             <mat-form-field>
-                                <input matInput  placeholder="first name" required [(ngModel)]="fname" name="fname"/>
+                                <input matInput  placeholder="first name" required [(ngModel)]="fname" name="fname" />
                             </mat-form-field>
                             <br>
                             <mat-form-field>
@@ -19,13 +19,16 @@
                             </mat-form-field>
                             <br>
                             <mat-form-field>
-                                <input matInput placeholder="Email" [(ngModel)]="email" name="email" required/>
+                                <input matInput placeholder="Email" [(ngModel)]="email" name="email" required
+                                        [formControl] = "fcemail"    />
                             </mat-form-field>
+                            <mat-error *ngIf="fcemail.invalid">{{incorretEmail()}}</mat-error>
                             <br>
-                            <mat-form-field>
+                            <mat-form-field >
                                 <input matInput type="password"  placeholder="password" [type]="hide ? 'password': 'text'" 
-                                    [(ngModel)]="password" name="password"     required/>
+                                    [(ngModel)]="password" name="password" [formControl] = "fcpassword"    required />
                                 <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                <mat-error *ngIf="fcpassword.invalid">{{incorrectPassword()}}</mat-error>
                             </mat-form-field>
                             <br>
                             <mat-form-field>
@@ -35,7 +38,7 @@
                             <br>
                             <mat-form-field>
                                 <mat-select placeholder ="Local Comitee" [(ngModel)]="selectedCommitee" 
-                                 name="selectedCommitee" >
+                                 name="selectedCommitee" required >
                                     <mat-option *ngFor="let lc of localOffice"  [value] = "lc.value">
                                         {{lc.viewValue}}
                                     </mat-option>
@@ -43,8 +46,8 @@
                             </mat-form-field>
                             <br>
                             <mat-form-field>
-                                <mat-select placeholder ="Reffereal method" [(ngModel)]="refMethod" name="refMethod" >
-                                        <mat-option *ngFor="let ref of referralMethods"  [value] = "ref.value">
+                                <mat-select placeholder ="Reffereal method" [(ngModel)]="refMethod" name="refMethod" required >
+                                        <mat-option *ngFor="let ref of referralMethods"  [value] = "ref.value" >
                                             {{ref.viewValue}}
                                         </mat-option>
                                 </mat-select>   
@@ -56,7 +59,7 @@
                             </mat-checkbox>
                             <br>
                             
-                            <button type="submit" mat-flat-button color="primary" id="btn_submit" (click) = "submitData()" > Submit </button>
+                            <button type="submit" mat-flat-button color="primary" id="btn_submit" (click) = "submitData()" matTooltip="Info about the action" > Submit </button>
                                 
                             
                     

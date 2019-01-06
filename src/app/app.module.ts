@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import {FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
@@ -15,6 +15,7 @@ import {
           MatFormFieldModule,
           MatGridListModule,
           MatCardModule,
+          MatSnackBarModule,
      } from '@angular/material';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -30,6 +31,7 @@ import { MainFormComponent } from './main-form/main-form.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     MatInputModule,
     BrowserAnimationsModule,
     MatButtonModule,
@@ -39,7 +41,8 @@ import { MainFormComponent } from './main-form/main-form.component';
     MatCheckboxModule,
     MatFormFieldModule,
     MatGridListModule,
-    MatCardModule
+    MatCardModule,
+    MatSnackBarModule
 
 
   ],
