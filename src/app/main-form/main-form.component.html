@@ -46,7 +46,7 @@
                                 </mat-form-field>
                                 <br>
                                 <mat-form-field>
-                                    <mat-select placeholder ="Reffereal method" [(ngModel)]="refMethod" name="refMethod" required >
+                                    <mat-select placeholder ="Reffereal method" [(ngModel)]="selectedRefMethod" name="selectedRefMethod" required >
                                             <mat-option *ngFor="let ref of referralMethods"  [value] = "ref.value" >
                                                 {{ref.viewValue}}
                                             </mat-option>

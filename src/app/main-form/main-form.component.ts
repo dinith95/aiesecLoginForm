@@ -4,6 +4,9 @@ import { MatSnackBarModule } from '@angular/material';
 import {MatSnackBar} from '@angular/material';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {FormControl, FormGroupDirective, NgForm, Validators, AbstractControl} from '@angular/forms';
+import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import { error } from '@angular/compiler/src/util';
 
 const passwordValidator = require('password-validator');
 
@@ -26,13 +29,14 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./main-form.component.css']
 })
 export class MainFormComponent implements OnInit {
-  constructor(public snackBar: MatSnackBar) { }
+  constructor(public snackBar: MatSnackBar, private httpClient: HttpClient) { }
   fname: String = '';
   lname: String = '';
   password: String = '';
   accepted: Boolean = false;
   email: String = '';
   mobNo: String = '';
+  refMethod: String = '';
   selectedRefMethod: String = '';
   selectedCommitee: String = '';
 
@@ -40,6 +44,7 @@ export class MainFormComponent implements OnInit {
   dataNotNull: Boolean = false; // checks whether any field is null
   validPassword: Boolean = false; // checks for the validity of the password
   // pwSchema: any;
+  URL = "https://42297c99-d142-447c-923e-1133808acfe7.mock.pstmn.io/browser";
 
   fcemail = new FormControl('', [ Validators.required , Validators.email]);
   fcpassword = new FormControl('', [this.validatePassword, Validators.required]);
@@ -94,7 +99,7 @@ export class MainFormComponent implements OnInit {
 
   validateData(){
     if (this.fname !== '' && this.lname !== '' && this.email !== '' && this.mobNo !== ''
-     && this.selectedCommitee !== '' && this.selectedCommitee !== '' && this.accepted) {
+     && this.selectedCommitee !== '' && this.selectedRefMethod !== '' && this.accepted) {
       // this.dataNotNull = true;
       const pwSchema = new passwordValidator();
       pwSchema
@@ -126,13 +131,31 @@ export class MainFormComponent implements OnInit {
   }
 
   submitData() {
-    if(this.validateData()){
-      alert('good to proceed');
+    if (this.validateData()){
+      // alert('good to proceed');
+      const userData = {
+        'first_name' : this.fname ,
+        'last_name': this.lname,
+        'phone': this.mobNo,
+        'email' : this.email,
+        'password' : this.password,
+        'lc': this.selectedCommitee,
+        'refMethod' : this.selectedRefMethod
+
+      };
+      return this.httpClient.post(this.URL , userData).subscribe(
+        (data) => {
+          alert('data sent succesfully');
+        },
+        (e) => {
+          console.log('error' , error);
+        }
+      );
     }
     // alert("submit dosent work");
   }
 
-  incorretEmail(){
+  incorretEmail() {
     if (this.fcemail.hasError('required')) {
       // console.log('no email');
       // this.submitDisabled = true ;

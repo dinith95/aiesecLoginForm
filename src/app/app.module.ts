@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { HttpClientModule} from '@angular/common/http';
 
 import {
           MatButtonModule ,
@@ -42,7 +43,8 @@ import { MainFormComponent } from './main-form/main-form.component';
     MatFormFieldModule,
     MatGridListModule,
     MatCardModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    HttpClientModule
 
 
   ],
