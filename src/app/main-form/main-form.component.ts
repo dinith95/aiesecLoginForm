@@ -7,10 +7,10 @@ import {FormControl, FormGroupDirective, NgForm, Validators, AbstractControl} fr
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { error } from '@angular/compiler/src/util';
+// import { AngularFireDatabase, AngularFireList  } from '@angular/fire/database';
 
 const passwordValidator = require('password-validator');
-
-export interface SelectList{
+export interface SelectList {
   value: string;
   viewValue: string;
 }
@@ -29,7 +29,10 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./main-form.component.css']
 })
 export class MainFormComponent implements OnInit {
-  constructor(public snackBar: MatSnackBar, private httpClient: HttpClient) { }
+  // 
+
+  constructor(public snackBar: MatSnackBar, private httpClient: HttpClient ){}
+    // private db: AngularFireDatabase) { }
   fname: String = '';
   lname: String = '';
   password: String = '';
@@ -37,14 +40,15 @@ export class MainFormComponent implements OnInit {
   email: String = '';
   mobNo: String = '';
   refMethod: String = '';
-  selectedRefMethod: String = '';
-  selectedCommitee: String = '';
+  selectedRefMethod: number = null;
+  selectedCommitee: number = null;
+  // users: AngularFireList<any[any]>;
 
   hide: boolean; // toggle the hide and show of the password 
   dataNotNull: Boolean = false; // checks whether any field is null
   validPassword: Boolean = false; // checks for the validity of the password
   // pwSchema: any;
-  URL = "https://42297c99-d142-447c-923e-1133808acfe7.mock.pstmn.io/browser";
+  URL = 'http://127.0.0.1:8000/browser/';
 
   fcemail = new FormControl('', [ Validators.required , Validators.email]);
   fcpassword = new FormControl('', [this.validatePassword, Validators.required]);
@@ -89,6 +93,7 @@ export class MainFormComponent implements OnInit {
   ];
   ngOnInit() {
     this.hide =  true;
+    // this.users = this.db.list('/');
     // this.pwSchema = new passwordValidator();
     // this.pwSchema
     //     .is().min(8)
@@ -99,7 +104,7 @@ export class MainFormComponent implements OnInit {
 
   validateData(){
     if (this.fname !== '' && this.lname !== '' && this.email !== '' && this.mobNo !== ''
-     && this.selectedCommitee !== '' && this.selectedRefMethod !== '' && this.accepted) {
+     && this.selectedCommitee !== null && this.selectedRefMethod !== null && this.accepted) {
       // this.dataNotNull = true;
       const pwSchema = new passwordValidator();
       pwSchema
@@ -134,18 +139,21 @@ export class MainFormComponent implements OnInit {
     if (this.validateData()){
       // alert('good to proceed');
       const userData = {
-        'first_name' : this.fname ,
-        'last_name': this.lname,
-        'phone': this.mobNo,
-        'email' : this.email,
-        'password' : this.password,
-        'lc': this.selectedCommitee,
-        'refMethod' : this.selectedRefMethod
+        first_name : this.fname ,
+        last_name : this.lname,
+        phone : this.mobNo,
+        email : this.email,
+        password : this.password,
+        lc : this.localOffice[this.selectedCommitee - 1].viewValue,
+        ref_type : this.referralMethods[this.selectedRefMethod - 1].viewValue
 
       };
-      return this.httpClient.post(this.URL , userData).subscribe(
+      const json_string = JSON.stringify(userData);
+      return this.httpClient.post(this.URL , json_string).subscribe(
         (data) => {
+
           alert('data sent succesfully');
+          // this.users.push(userData);
         },
         (e) => {
           console.log('error' , error);
