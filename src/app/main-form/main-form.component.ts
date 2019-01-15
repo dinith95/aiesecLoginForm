@@ -7,7 +7,7 @@ import {FormControl, FormGroupDirective, NgForm, Validators, AbstractControl} fr
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { error } from '@angular/compiler/src/util';
-// import { AngularFireDatabase, AngularFireList  } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireList  } from '@angular/fire/database';
 
 const passwordValidator = require('password-validator');
 export interface SelectList {
@@ -31,7 +31,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class MainFormComponent implements OnInit {
   // 
 
-  constructor(public snackBar: MatSnackBar, private httpClient: HttpClient ){}
+  constructor(public snackBar: MatSnackBar, private httpClient: HttpClient,  private db: AngularFireDatabase ){}
     // private db: AngularFireDatabase) { }
   fname: String = '';
   lname: String = '';
