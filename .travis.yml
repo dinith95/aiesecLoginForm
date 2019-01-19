@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+ - "9"
+dist: trusty
+sudo: false
+
+branches:
+ only:
+ - master
+
+before_script:
+ - npm install -g @angular/cli
+
+script:
+  - ng build --prod --base-href https://dinith72.github.io/aiesecLoginForm/
+
+deploy:
+ provider: pages
+ skip_cleanup: true
+ github_token: $GITHUB_TOKEN
+ local_dir: dist/AiesecLogin
+ on:
+   branch: master
