@@ -17,3 +17,46 @@
 #ff_pw{
     color: red;
 }
+input{
+    width: 100%;
+}
+/* removing the undelined text in the mat input */
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+/* creating rounded margin card */
+.form_card{
+    background-color:  rgba(251, 250, 251, 0.842) ;
+    border-radius: 35px;
+    padding-bottom: 0% !important;
+    padding-top: 2% !important;
+    padding-right: 10%;
+    margin-bottom: 2%;
+    
+    
+}
+
+#main_card{
+    width: 80%;
+    height: 90%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#personal-info{
+    background-color: transparent;
+}
+#card_personal-info{
+    background-color: transparent;
+    max-height: 70%;
+    /* display: flex;
+    flex-direction: column; */
+    /* overflow-y: auto; */
+    overflow-y: auto;
+}
