@@ -1,3 +1,4 @@
+import { AngularFireDatabase } from '@angular/fire/database';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule , ReactiveFormsModule} from '@angular/forms';
@@ -6,7 +7,8 @@ import {RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HttpClientModule} from '@angular/common/http';
-// import { AngularFireModule  } from '@angular/fire';
+import { AngularFireModule  } from '@angular/fire';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 import {
           MatButtonModule ,
@@ -48,7 +50,8 @@ import { from } from 'rxjs';
     MatCardModule,
     MatSnackBarModule,
     HttpClientModule,
-    // AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
 
 
   ],

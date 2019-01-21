@@ -51,12 +51,15 @@ input{
 
 #personal-info{
     background-color: transparent;
+    flex-direction: column;
+    overflow: auto;
+    height: 100%;
 }
 #card_personal-info{
     background-color: transparent;
     max-height: 70%;
-    /* display: flex;
-    flex-direction: column; */
+    /* display: flex;*/
+    flex-direction: column; 
+    overflow-y: auto; 
     /* overflow-y: auto; */
-    overflow-y: auto;
 }
