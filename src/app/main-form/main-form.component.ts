@@ -29,8 +29,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './main-form.component.html',
   styleUrls: ['./main-form.component.css']
 })
-export class MainFormComponent implements OnInit 
-{
+export class MainFormComponent implements OnInit {
 
   constructor(public snackBar: MatSnackBar, private httpClient: HttpClient , private db: AngularFirestore) {
     this.database = db;
