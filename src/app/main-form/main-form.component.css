@@ -43,7 +43,7 @@ input{
     margin-right: 10%;
     margin-top: 5%;
     margin-bottom: 5%;
-    background-color: antiquewhite;
+    background-color: rgba(3, 127, 243, 0.493);
     display: flex;
     flex-direction: column;
     
