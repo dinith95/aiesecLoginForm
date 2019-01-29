@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { error } from '@angular/compiler/src/util';
 // import { AngularFireDatabase, AngularFireList  } from '@angular/fire/database';
+import { AngularFirestore} from '@angular/fire/firestore';
 
 const passwordValidator = require('password-validator');
 export interface SelectList {
@@ -28,11 +29,12 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './main-form.component.html',
   styleUrls: ['./main-form.component.css']
 })
-export class MainFormComponent implements OnInit {
-  // 
+export class MainFormComponent implements OnInit 
+{
 
-  constructor(public snackBar: MatSnackBar, private httpClient: HttpClient ){}
-    // private db: AngularFireDatabase) { }
+  constructor(public snackBar: MatSnackBar, private httpClient: HttpClient , private db: AngularFirestore) {
+    this.database = db;
+   }
   fname: String = '';
   lname: String = '';
   password: String = '';
@@ -42,6 +44,7 @@ export class MainFormComponent implements OnInit {
   refMethod: String = '';
   selectedRefMethod: number = null;
   selectedCommitee: number = null;
+  database: any ;
   // users: AngularFireList<any[any]>;
 
   hide: boolean; // toggle the hide and show of the password 
@@ -149,9 +152,9 @@ export class MainFormComponent implements OnInit {
 
       };
       const json_string = JSON.stringify(userData);
+      this.database.collection('signups').add(userData);
       return this.httpClient.post(this.URL , json_string).subscribe(
         (data) => {
-
           alert('data sent succesfully');
           // this.users.push(userData);
         },
