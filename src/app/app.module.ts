@@ -1,3 +1,4 @@
+import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,7 +9,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HttpClientModule} from '@angular/common/http';
 import { AngularFireModule  } from '@angular/fire';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
+// import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 import {
           MatButtonModule ,
@@ -51,11 +52,10 @@ import { from } from 'rxjs';
     MatSnackBarModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
 
 
   ],
-  providers: [],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

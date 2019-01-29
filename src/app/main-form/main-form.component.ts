@@ -7,8 +7,8 @@ import {FormControl, FormGroupDirective, NgForm, Validators, AbstractControl} fr
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { error } from '@angular/compiler/src/util';
-import { AngularFireDatabase, AngularFireList  } from '@angular/fire/database';
-// import {FirebaseListObservable} from '@angular/fire';
+// import { AngularFireDatabase, AngularFireList  } from '@angular/fire/database';
+import { AngularFirestore} from '@angular/fire/firestore';
 
 const passwordValidator = require('password-validator');
 export interface SelectList {
@@ -29,10 +29,10 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './main-form.component.html',
   styleUrls: ['./main-form.component.css']
 })
-export class MainFormComponent implements OnInit {
-  // 
+export class MainFormComponent implements OnInit 
+{
 
-  constructor(public snackBar: MatSnackBar, private httpClient: HttpClient , private db: AngularFireDatabase) {
+  constructor(public snackBar: MatSnackBar, private httpClient: HttpClient , private db: AngularFirestore) {
     this.database = db;
    }
   fname: String = '';
@@ -152,9 +152,9 @@ export class MainFormComponent implements OnInit {
 
       };
       const json_string = JSON.stringify(userData);
+      this.database.collection('signups').add(userData);
       return this.httpClient.post(this.URL , json_string).subscribe(
         (data) => {
-
           alert('data sent succesfully');
           // this.users.push(userData);
         },

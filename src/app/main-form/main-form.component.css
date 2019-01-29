@@ -57,7 +57,7 @@ input{
 }
 #card_personal-info{
     background-color: transparent;
-    max-height: 70%;
+    max-height: auto;
     /* display: flex;*/
     flex-direction: column; 
     overflow-y: auto; 
