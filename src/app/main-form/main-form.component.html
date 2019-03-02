@@ -1,13 +1,14 @@
 <!-- <h1>
   main-form works!
 </h1> -->
-
-<mat-card id="main_card">
-  <mat-card-content>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav-content>
+    <!-- <mat-card id="main_card">
+      <mat-card-content> -->
     <mat-grid-list cols="2" id="grid_list">
       <mat-grid-tile colspan="1" id="image">
         <!-- <img src="../../assets/aiesec_pic.jpg" /> -->
-        <a href="https://ibb.co/JH8sJKz"
+        <a
           ><img
             src="https://i.ibb.co/qphrQdR/aiesec-pic.jpg"
             alt="aiesec-pic"
@@ -18,123 +19,127 @@
         <div class="info">
           <mat-card id="card_personal-info">
             <form class="personal-info" id="personal-info">
-              <mat-card class="form_card">
-                <mat-form-field>
-                  <input
-                    matInput
-                    placeholder="First Name"
-                    required
-                    [(ngModel)]="fname"
-                    name="fname"
-                    id="fname"
-                  />
-                </mat-form-field>
-              </mat-card>
-              <mat-card class="form_card">
-                <mat-form-field>
-                  <input
-                    matInput
-                    placeholder="Last Name"
-                    [(ngModel)]="lname"
-                    name="lname"
-                    required
-                  />
-                </mat-form-field>
-              </mat-card>
-              <mat-card class="form_card">
-                <mat-form-field>
-                  <input
-                    matInput
-                    placeholder="Email"
-                    [(ngModel)]="email"
-                    name="email"
-                    required
-                    [formControl]="fcemail"
-                  />
-                  <mat-error *ngIf="fcemail.invalid">{{
-                    incorretEmail()
-                  }}</mat-error>
-                </mat-form-field>
-              </mat-card>
-              <mat-card class="form_card">
-                <mat-form-field>
-                  <input
-                    matInput
-                    type="password"
-                    placeholder="password"
-                    [type]="hide ? 'password' : 'text'"
-                    [(ngModel)]="password"
-                    name="password"
-                    [formControl]="fcpassword"
-                    required
-                  />
-                  <mat-icon matSuffix (click)="hide = !hide">{{
-                    hide ? "visibility_off" : "visibility"
-                  }}</mat-icon>
-                  <mat-error *ngIf="fcpassword.invalid">{{
-                    incorrectPassword()
-                  }}</mat-error>
-                </mat-form-field>
-              </mat-card>
-              <mat-card class="form_card">
-                <mat-form-field>
-                  <input
-                    matInput
-                    placeholder="    Mobile Number"
-                    type="tel"
-                    [(ngModel)]="mobNo"
-                    name="mobNo"
-                    required
-                  />
-                  <span matPrefix>+94</span>
-                </mat-form-field>
-              </mat-card>
-              <mat-card class="form_card">
-                <mat-form-field>
-                  <mat-select
-                    placeholder="Local Commitee"
-                    [(ngModel)]="selectedCommitee"
-                    name="selectedCommitee"
-                    required
+              <!-- <mat-card class="form_card"> -->
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="First Name"
+                  required
+                  [(ngModel)]="fname"
+                  name="fname"
+                  id="fname"
+                />
+              </mat-form-field>
+              <br />
+              <!-- </mat-card> -->
+              <!-- <mat-card class="form_card"> -->
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Last Name"
+                  [(ngModel)]="lname"
+                  name="lname"
+                  required
+                />
+              </mat-form-field>
+              <br />
+              <!-- </mat-card> -->
+              <!-- <mat-card class="form_card"> -->
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Email"
+                  [(ngModel)]="email"
+                  name="email"
+                  required
+                  [formControl]="fcemail"
+                />
+                <mat-error *ngIf="fcemail.invalid">{{
+                  incorretEmail()
+                }}</mat-error>
+              </mat-form-field>
+              <br />
+              <!-- </mat-card> -->
+              <!-- <mat-card class="form_card"> -->
+              <mat-form-field>
+                <input
+                  matInput
+                  type="password"
+                  placeholder="Password"
+                  [type]="hide ? 'password' : 'text'"
+                  [(ngModel)]="password"
+                  name="password"
+                  [formControl]="fcpassword"
+                  required
+                />
+                <mat-icon matSuffix (click)="hide = !hide">{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+                <mat-error *ngIf="fcpassword.invalid">{{
+                  incorrectPassword()
+                }}</mat-error>
+              </mat-form-field>
+              <br />
+              <!-- </mat-card> -->
+              <!-- <mat-card class="form_card"> -->
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="    Mobile Number"
+                  type="tel"
+                  [(ngModel)]="mobNo"
+                  name="mobNo"
+                  required
+                />
+                <span matPrefix>+94</span>
+              </mat-form-field>
+              <br />
+              <!-- </mat-card> -->
+              <!-- <mat-card class="form_card"> -->
+              <mat-form-field>
+                <mat-select
+                  placeholder="Local Committee"
+                  [(ngModel)]="selectedCommitee"
+                  name="selectedCommitee"
+                  required
+                >
+                  <mat-option *ngFor="let lc of localOffice" [value]="lc.value">
+                    {{ lc.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <br />
+              <!-- </mat-card> -->
+              <!-- <mat-card class="form_card"> -->
+              <mat-form-field>
+                <mat-select
+                  placeholder="Reffereal Method"
+                  [(ngModel)]="selectedRefMethod"
+                  name="selectedRefMethod"
+                  required
+                >
+                  <mat-option
+                    *ngFor="let ref of referralMethods"
+                    [value]="ref.value"
                   >
-                    <mat-option
-                      *ngFor="let lc of localOffice"
-                      [value]="lc.value"
-                    >
-                      {{ lc.viewValue }}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </mat-card>
-              <mat-card class="form_card">
-                <mat-form-field>
-                  <mat-select
-                    placeholder="Reffereal Method"
-                    [(ngModel)]="selectedRefMethod"
-                    name="selectedRefMethod"
-                    required
-                  >
-                    <mat-option
-                      *ngFor="let ref of referralMethods"
-                      [value]="ref.value"
-                    >
-                      {{ ref.viewValue }}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </mat-card>
+                    {{ ref.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <br />
+              <!-- </mat-card> -->
               <mat-checkbox [(ngModel)]="accepted" name="accepted">
                 <!-- <p> by sigining i would agree to AIESEC <a href="https://aiesec.org/assets/terms.pdf"> privacy terms</a>  </p>   -->
                 <p>
                   I hereby agree to<a
-                    href="https://aiesec.org/assets/terms.pdf"
+                    href="https://drive.google.com/file/d/1FM6P5scEC1exa18BlOfhmfZTyT8UYGjy/view?usp=sharing"
                   >
                     AIESEC in Sri Lanka Privacy Terms</a
                   >
                   <br />
                   and
                   <a href="https://aiesec.org/assets/terms.pdf"
-                    >International Privacy Terms</a
+                    >AIESEC International Privacy Terms</a
                   >
                   .
                 </p>
@@ -156,5 +161,7 @@
         </div>
       </mat-grid-tile>
     </mat-grid-list>
-  </mat-card-content>
-</mat-card>
+    <!-- </mat-card-content>
+    </mat-card> -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -21,7 +21,8 @@ import {
   MatFormFieldModule,
   MatGridListModule,
   MatCardModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatSidenavModule
 } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -48,6 +49,7 @@ import { from } from "rxjs";
     MatCardModule,
     MatSnackBarModule,
     HttpClientModule,
+    MatSidenavModule,
     // MatDrawerContainer,
     AngularFireModule.initializeApp(environment.firebase)
   ],
