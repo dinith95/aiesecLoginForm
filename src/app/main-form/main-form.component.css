@@ -1,65 +1,71 @@
 /****** grid list style settings *********** */
-#grid_list{
-    display: flex;
-    flex-direction: row;
+#grid_list {
+  display: flex;
+  flex-direction: row;
 }
-#image{
-    align-content: stretch;
-    align-self: flex-start;
-    align-items: flex-start;
+#image {
+  align-content: stretch;
+  align-self: flex-start;
+  align-items: flex-start;
 }
 
-#input_pw{
-  border-color: red ;
+#input_pw {
+  border-color: red;
   border-bottom-color: red;
 }
 
-#ff_pw{
-    color: red;
+#ff_pw {
+  color: red;
 }
-input{
-    width: 100%;
+input {
+  width: 100%;
 }
 /* removing the undelined text in the mat input */
 ::ng-deep .mat-form-field-underline {
-    display: none;
+  display: none;
 }
 /* creating rounded margin card */
-.form_card{
-    background-color:  rgba(251, 250, 251, 0.842) ;
-    border-radius: 35px;
-    padding-bottom: 0% !important;
-    padding-top: 2% !important;
-    padding-right: 10%;
-    margin-bottom: 2%;
-    
-    
+.form_card {
+  background-color: rgba(251, 250, 251, 0.842);
+  border-radius: 35px;
+  padding-bottom: 0% !important;
+  padding-top: 2% !important;
+  padding-right: 10%;
+  margin-bottom: 2%;
 }
 
-#main_card{
-    width: 80%;
-    height: 90%;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    background-color: rgba(3, 127, 243, 0.493);
-    display: flex;
-    flex-direction: column;
-    
+#main_card {
+  width: 80%;
+  height: 90%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  background-color: rgba(3, 127, 243, 0.493);
+  display: flex;
+  flex-direction: column;
 }
 
-#personal-info{
-    background-color: transparent;
-    flex-direction: column;
-    overflow: auto;
-    height: 100%;
+#personal-info {
+  background-color: transparent;
+  flex-direction: column;
+  overflow: auto;
+  height: 100%;
 }
-#card_personal-info{
-    background-color: transparent;
-    max-height: auto;
-    /* display: flex;*/
-    flex-direction: column; 
-    overflow-y: auto; 
-    /* overflow-y: auto; */
+#card_personal-info {
+  background-color: transparent;
+  max-height: auto;
+  /* display: flex;*/
+  flex-direction: column;
+  overflow-y: auto;
+  /* overflow-y: auto; */
+}
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 5%;
+  background-color: rgba(3, 127, 243, 0.493);
 }
