@@ -66,6 +66,6 @@ input {
   bottom: 0;
   left: 0;
   right: 0;
-  margin: 5%;
+  /* margin: 5%; */
   background-color: rgba(3, 127, 243, 0.493);
 }

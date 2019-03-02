@@ -19,111 +19,115 @@
         <div class="info">
           <mat-card id="card_personal-info">
             <form class="personal-info" id="personal-info">
-              <mat-card class="form_card">
-                <mat-form-field>
-                  <input
-                    matInput
-                    placeholder="First Name"
-                    required
-                    [(ngModel)]="fname"
-                    name="fname"
-                    id="fname"
-                  />
-                </mat-form-field>
-              </mat-card>
-              <mat-card class="form_card">
-                <mat-form-field>
-                  <input
-                    matInput
-                    placeholder="Last Name"
-                    [(ngModel)]="lname"
-                    name="lname"
-                    required
-                  />
-                </mat-form-field>
-              </mat-card>
-              <mat-card class="form_card">
-                <mat-form-field>
-                  <input
-                    matInput
-                    placeholder="Email"
-                    [(ngModel)]="email"
-                    name="email"
-                    required
-                    [formControl]="fcemail"
-                  />
-                  <mat-error *ngIf="fcemail.invalid">{{
-                    incorretEmail()
-                  }}</mat-error>
-                </mat-form-field>
-              </mat-card>
-              <mat-card class="form_card">
-                <mat-form-field>
-                  <input
-                    matInput
-                    type="password"
-                    placeholder="password"
-                    [type]="hide ? 'password' : 'text'"
-                    [(ngModel)]="password"
-                    name="password"
-                    [formControl]="fcpassword"
-                    required
-                  />
-                  <mat-icon matSuffix (click)="hide = !hide">{{
-                    hide ? "visibility_off" : "visibility"
-                  }}</mat-icon>
-                  <mat-error *ngIf="fcpassword.invalid">{{
-                    incorrectPassword()
-                  }}</mat-error>
-                </mat-form-field>
-              </mat-card>
-              <mat-card class="form_card">
-                <mat-form-field>
-                  <input
-                    matInput
-                    placeholder="    Mobile Number"
-                    type="tel"
-                    [(ngModel)]="mobNo"
-                    name="mobNo"
-                    required
-                  />
-                  <span matPrefix>+94</span>
-                </mat-form-field>
-              </mat-card>
-              <mat-card class="form_card">
-                <mat-form-field>
-                  <mat-select
-                    placeholder="Local Commitee"
-                    [(ngModel)]="selectedCommitee"
-                    name="selectedCommitee"
-                    required
+              <!-- <mat-card class="form_card"> -->
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="First Name"
+                  required
+                  [(ngModel)]="fname"
+                  name="fname"
+                  id="fname"
+                />
+              </mat-form-field>
+              <br />
+              <!-- </mat-card> -->
+              <!-- <mat-card class="form_card"> -->
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Last Name"
+                  [(ngModel)]="lname"
+                  name="lname"
+                  required
+                />
+              </mat-form-field>
+              <br />
+              <!-- </mat-card> -->
+              <!-- <mat-card class="form_card"> -->
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Email"
+                  [(ngModel)]="email"
+                  name="email"
+                  required
+                  [formControl]="fcemail"
+                />
+                <mat-error *ngIf="fcemail.invalid">{{
+                  incorretEmail()
+                }}</mat-error>
+              </mat-form-field>
+              <br />
+              <!-- </mat-card> -->
+              <!-- <mat-card class="form_card"> -->
+              <mat-form-field>
+                <input
+                  matInput
+                  type="password"
+                  placeholder="password"
+                  [type]="hide ? 'password' : 'text'"
+                  [(ngModel)]="password"
+                  name="password"
+                  [formControl]="fcpassword"
+                  required
+                />
+                <mat-icon matSuffix (click)="hide = !hide">{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+                <mat-error *ngIf="fcpassword.invalid">{{
+                  incorrectPassword()
+                }}</mat-error>
+              </mat-form-field>
+              <br />
+              <!-- </mat-card> -->
+              <!-- <mat-card class="form_card"> -->
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="    Mobile Number"
+                  type="tel"
+                  [(ngModel)]="mobNo"
+                  name="mobNo"
+                  required
+                />
+                <span matPrefix>+94</span>
+              </mat-form-field>
+              <br />
+              <!-- </mat-card> -->
+              <!-- <mat-card class="form_card"> -->
+              <mat-form-field>
+                <mat-select
+                  placeholder="Local Commitee"
+                  [(ngModel)]="selectedCommitee"
+                  name="selectedCommitee"
+                  required
+                >
+                  <mat-option *ngFor="let lc of localOffice" [value]="lc.value">
+                    {{ lc.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <br />
+              <!-- </mat-card> -->
+              <!-- <mat-card class="form_card"> -->
+              <mat-form-field>
+                <mat-select
+                  placeholder="Reffereal Method"
+                  [(ngModel)]="selectedRefMethod"
+                  name="selectedRefMethod"
+                  required
+                >
+                  <mat-option
+                    *ngFor="let ref of referralMethods"
+                    [value]="ref.value"
                   >
-                    <mat-option
-                      *ngFor="let lc of localOffice"
-                      [value]="lc.value"
-                    >
-                      {{ lc.viewValue }}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </mat-card>
-              <mat-card class="form_card">
-                <mat-form-field>
-                  <mat-select
-                    placeholder="Reffereal Method"
-                    [(ngModel)]="selectedRefMethod"
-                    name="selectedRefMethod"
-                    required
-                  >
-                    <mat-option
-                      *ngFor="let ref of referralMethods"
-                      [value]="ref.value"
-                    >
-                      {{ ref.viewValue }}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </mat-card>
+                    {{ ref.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <br />
+              <!-- </mat-card> -->
               <mat-checkbox [(ngModel)]="accepted" name="accepted">
                 <!-- <p> by sigining i would agree to AIESEC <a href="https://aiesec.org/assets/terms.pdf"> privacy terms</a>  </p>   -->
                 <p>
