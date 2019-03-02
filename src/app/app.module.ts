@@ -49,7 +49,7 @@ import { from } from "rxjs";
     MatCardModule,
     MatSnackBarModule,
     HttpClientModule,
-    MatSidenavModule
+    MatSidenavModule,
     // MatDrawerContainer,
     AngularFireModule.initializeApp(environment.firebase)
   ],
