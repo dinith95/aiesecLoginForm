@@ -9,6 +9,7 @@ import { AppComponent } from "./app.component";
 import { AppRoutingModule } from ".//app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { AngularFireModule } from "@angular/fire";
+import { ResponsiveModule } from "ngx-responsive";
 // import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 import {
@@ -29,7 +30,16 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 // importing the compinnts
 import { MainFormComponent } from "./main-form/main-form.component";
 import { from } from "rxjs";
-
+const config = {
+  breakPoints: {
+    xs: { max: 199 },
+    sm: { min: 200, max: 959 },
+    md: { min: 960, max: 1079 },
+    lg: { min: 1080, max: 1919 },
+    xl: { min: 1920 }
+  },
+  debounceTime: 100
+};
 @NgModule({
   declarations: [AppComponent, MainFormComponent],
   imports: [
@@ -50,6 +60,7 @@ import { from } from "rxjs";
     MatSnackBarModule,
     HttpClientModule,
     MatSidenavModule,
+    ResponsiveModule.forRoot(config),
     // MatDrawerContainer,
     AngularFireModule.initializeApp(environment.firebase)
   ],

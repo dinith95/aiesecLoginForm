@@ -1,14 +1,16 @@
 /****** grid list style settings *********** */
 #grid_list {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row;
   align-items: flex-start;
-  justify-items: flex-start;
+  justify-items: flex-start; */
   /* justify-content: flex-start; */
+  vertical-align: top;
 }
 #image {
   /* align-content: stretch; */
   align-self: flex-start;
+  vertical-align: top;
   /* align-items: flex-start; */
 }
 
@@ -79,6 +81,7 @@ input {
 
 #form {
   display: flex;
+  vertical-align: top;
   /* align-items: flex-start;
   align-content: flex-start; */
 }
