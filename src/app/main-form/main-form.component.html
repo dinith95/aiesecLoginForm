@@ -470,7 +470,7 @@
   </mat-grid-list>
 </div>
 <div *sm>
-  <mat-grid-list cols="1" id="grid_list" rowHeight="1:2">
+  <mat-grid-list cols="1" id="grid_list" rowHeight="2:3">
     <mat-grid-tile colspan="1" id="image">
       <!-- <img src="../../assets/aiesec_pic.jpg" /> -->
       <a
@@ -595,6 +595,166 @@
             <!-- <p> by sigining i would agree to AIESEC <a href="https://aiesec.org/assets/terms.pdf"> privacy terms</a>  </p>   -->
             <p>
               I hereby agree to<a
+                href="https://drive.google.com/file/d/1FM6P5scEC1exa18BlOfhmfZTyT8UYGjy/view?usp=sharing"
+              >
+                AIESEC in Sri Lanka Privacy Terms</a
+              >
+              <br />
+              and
+              <a href="https://aiesec.org/assets/terms.pdf"
+                >AIESEC International Privacy Terms</a
+              >
+              .
+            </p>
+          </mat-checkbox>
+          <br />
+
+          <button
+            type="submit"
+            mat-flat-button
+            color="primary"
+            id="btn_submit"
+            (click)="submitData()"
+            matTooltip="Info about the action"
+          >
+            Submit
+          </button>
+        </form>
+      </mat-card>
+      <!-- </div> -->
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<div *xs>
+  <mat-grid-list cols="1" id="grid_list" rowHeight="1:2">
+    <mat-grid-tile colspan="1" id="image">
+      <!-- <img src="../../assets/aiesec_pic.jpg" /> -->
+      <a>
+        <!-- <img
+          src="https://i.ibb.co/qphrQdR/aiesec-pic.jpg"
+          alt="aiesec-pic"
+          border="0"
+      /> -->
+      </a>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" id="form">
+      <!-- <div class="info"> -->
+      <mat-card id="card_personal-info">
+        <form class="personal-info" id="personal-info-xs">
+          <!-- <mat-card class="form_card"> -->
+          <mat-form-field class="form_input">
+            <input
+              matInput
+              placeholder="First Name"
+              required
+              [(ngModel)]="fname"
+              name="fname"
+              id="fname"
+            />
+          </mat-form-field>
+          <br />
+          <!-- </mat-card> -->
+          <!-- <mat-card class="form_card"> -->
+          <mat-form-field class="form_input">
+            <input
+              matInput
+              placeholder="Last Name"
+              [(ngModel)]="lname"
+              name="lname"
+              required
+            />
+          </mat-form-field>
+          <br />
+          <!-- </mat-card> -->
+          <!-- <mat-card class="form_card"> -->
+          <mat-form-field class="form_input">
+            <input
+              matInput
+              placeholder="Email"
+              [(ngModel)]="email"
+              name="email"
+              required
+              [formControl]="fcemail"
+            />
+            <mat-error *ngIf="fcemail.invalid">{{ incorretEmail() }}</mat-error>
+          </mat-form-field>
+          <br />
+          <!-- </mat-card> -->
+          <!-- <mat-card class="form_card"> -->
+          <mat-form-field class="form_input">
+            <input
+              matInput
+              type="password"
+              placeholder="Password"
+              [type]="hide ? 'password' : 'text'"
+              [(ngModel)]="password"
+              name="password"
+              [formControl]="fcpassword"
+              required
+            />
+            <mat-icon matSuffix (click)="hide = !hide">{{
+              hide ? "visibility_off" : "visibility"
+            }}</mat-icon>
+            <mat-error *ngIf="fcpassword.invalid">{{
+              incorrectPassword()
+            }}</mat-error>
+          </mat-form-field>
+          <br />
+          <!-- </mat-card> -->
+          <!-- <mat-card class="form_card"> -->
+          <mat-form-field class="form_input">
+            <input
+              matInput
+              placeholder="    Mobile Number"
+              type="tel"
+              [(ngModel)]="mobNo"
+              name="mobNo"
+              required
+            />
+            <span matPrefix>+94</span>
+          </mat-form-field>
+          <br />
+          <!-- </mat-card> -->
+          <!-- <mat-card class="form_card"> -->
+          <mat-form-field class="form_input">
+            <mat-select
+              placeholder="Local Committee"
+              [(ngModel)]="selectedCommitee"
+              name="selectedCommitee"
+              required
+            >
+              <mat-option *ngFor="let lc of localOffice" [value]="lc.value">
+                {{ lc.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br />
+          <!-- </mat-card> -->
+          <!-- <mat-card class="form_card"> -->
+          <mat-form-field class="form_input">
+            <mat-select
+              placeholder="Reffereal Method"
+              [(ngModel)]="selectedRefMethod"
+              name="selectedRefMethod"
+              required
+            >
+              <mat-option
+                *ngFor="let ref of referralMethods"
+                [value]="ref.value"
+              >
+                {{ ref.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br />
+          <!-- </mat-card> -->
+          <mat-checkbox [(ngModel)]="accepted" name="accepted">
+            <!-- <p> by sigining i would agree to AIESEC <a href="https://aiesec.org/assets/terms.pdf"> privacy terms</a>  </p>   -->
+            <p>
+              I hereby agree to
+              <br>
+              <a
                 href="https://drive.google.com/file/d/1FM6P5scEC1exa18BlOfhmfZTyT8UYGjy/view?usp=sharing"
               >
                 AIESEC in Sri Lanka Privacy Terms</a

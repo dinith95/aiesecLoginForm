@@ -32,11 +32,11 @@ import { MainFormComponent } from "./main-form/main-form.component";
 import { from } from "rxjs";
 const config = {
   breakPoints: {
-    xs: { max: 199 },
-    sm: { min: 200, max: 959 },
+    xs: { max: 449 },
+    sm: { min: 450, max: 959 },
     md: { min: 960, max: 1079 },
-    lg: { min: 1080, max: 1919 },
-    xl: { min: 1920 }
+    lg: { min: 1080, max: 1499 },
+    xl: { min: 1500 }
   },
   debounceTime: 100
 };

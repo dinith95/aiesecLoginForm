@@ -38,29 +38,22 @@ input {
   margin-bottom: 2%;
 }
 
-#main_card {
-  width: 80%;
-  height: 90%;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  background-color: rgba(3, 127, 243, 0.493);
-  display: flex;
-  flex-direction: column;
-}
-
 #personal-info {
   background-color: transparent;
   flex-direction: column;
   overflow: auto;
-  height: 100%;
+  height: auto;
+  width: auto;
   display: flex;
   justify-content: flex-start;
 }
+#personal-info-xs {
+  max-width: 300px;
+  background-color: transparent;
+}
 #card_personal-info {
   background-color: transparent;
-  max-height: 800px;
+
   /* display: flex;*/
   flex-direction: column;
   /* overflow-y: auto; */
